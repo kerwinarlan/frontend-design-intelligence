@@ -1,7 +1,7 @@
 {
   "name": "frontend-design-intelligence",
-  "version": "1.0.0",
-  "description": "Design, motion, UI/UX, and portfolio polish intelligence system for coding agents.",
+  "version": "0.1.0",
+  "description": "Design and motion intelligence for coding agents. Audit, redesign, animate, and portfolio-polish frontend projects with reusable Pi Agent skills.",
   "main": "dist/index.js",
   "type": "module",
   "keywords": [
@@ -17,7 +17,8 @@
     "tailwindcss",
     "gsap",
     "lottie",
-    "framer-motion"
+    "framer-motion",
+    "playwright"
   ],
   "author": "Kerwin Arlan <kerwinarlan@gmail.com>",
   "license": "MIT",
@@ -43,7 +44,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.13.0",
-    "playwright": "^1.62.1",
+    "playwright": "^1.50.1",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3"
   }
