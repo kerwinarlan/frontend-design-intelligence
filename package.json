@@ -1,12 +1,14 @@
 {
   "name": "frontend-design-intelligence",
-  "version": "0.1.0",
-  "description": "Design and motion intelligence for coding agents. Audit, redesign, animate, and portfolio-polish frontend projects with reusable Pi Agent skills.",
+  "version": "0.2.0",
+  "description": "Design and motion intelligence for coding agents. Creative Director intent translation, auditing, redesign, animation, and portfolio polish with reusable Pi Agent skills.",
   "main": "dist/index.js",
   "type": "module",
   "keywords": [
     "pi-package",
     "pi-skills",
+    "creative-director",
+    "intent-translation",
     "frontend-design",
     "motion-design",
     "ui-ux",

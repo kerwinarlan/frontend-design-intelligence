@@ -13,35 +13,29 @@ This roadmap tracks the development phases of `frontend-design-intelligence`.
 - Formulate core design principles (`docs/DESIGN_PRINCIPLES.md`) and anti-slop guide (`docs/ANTI_SLOP.md`).
 - Establish portfolio storytelling guide (`docs/PORTFOLIO_DESIGN.md`).
 
-## Phase 2: Jitter Motion Research & Extraction (COMPLETED)
-- Analyze public Jitter motion templates across UI elements, buttons, shows, websites, and text.
-- Build structured JSON reference records (`knowledge/references/jitter/`).
-- Document research status and provenance (`knowledge/references/jitter/STATUS.md`).
+## Phase 2: Jitter Motion Research & Hardening (COMPLETED)
+- Reverse-engineer public Jitter templates across 12 categories.
+- Build 6 structured reference JSON databases (`knowledge/references/jitter/`).
+- Implement Playwright browser inspector (`scripts/browser-inspector.ts`).
+- Create runnable before/after evaluation fixture (`evals/fixtures/`).
+- Conduct non-destructive audit of real repository (`evals/real-projects/personal-website-audit.md`).
 
-## Phase 3: Core Knowledge Curriculum & Recipes (COMPLETED)
-- Draft comprehensive Markdown guides for all 9 fundamental domains (`knowledge/fundamentals/`).
-- Document component pattern standards (`knowledge/patterns/`).
-- Build copy-pasteable, frameworks-aware implementation recipes (`knowledge/recipes/`).
+## Phase 2.5: Public GitHub Release & Packaging (COMPLETED)
+- Publish as public repository on GitHub: `kerwinarlan/frontend-design-intelligence`.
+- Tag v0.1.0 release.
+- Verify Pi package remote discovery via `pi install git:github.com/kerwinarlan/frontend-design-intelligence`.
+- Generate social preview card (`assets/github-social-preview.png`).
 
-## Phase 4: Pi Agent Skills (COMPLETED)
-- Implement `portfolio-polish` (primary orchestration skill).
-- Implement `frontend-audit` (non-destructive scoring and assessment).
-- Implement `motion-pass` (targeted animation enhancement).
-- Implement `hero-redesign` (specialized hero section art direction).
-- Implement `ui-polish` (component micro-refinements).
-- Implement `study-reference` (reference extraction and translation).
+## Phase 3: Creative Director Orchestration Layer (COMPLETED)
+- Implement `creative-director` master skill (`skills/creative-director/SKILL.md`).
+- Build natural language intent translation guide (`skills/creative-director/references/intent-translation.md`).
+- Build structured design brief schema (`skills/creative-director/references/design-brief-schema.md`).
+- Create domain context guides (`knowledge/contexts/`): `lgu-government.md`, `public-service-portal.md`, `portfolio.md`, `dashboard.md`, `developer-tool.md`, `ai-ml-product.md`.
+- Establish intent translation test fixtures (`evals/fixtures/intent-translation.md`).
+- Update all specialist skills to accept context parameters from `creative-director`.
+- Tag v0.2.0 release.
 
-## Phase 5: Evaluation & Examples (COMPLETED)
-- Define 14-dimension scoring rubric (`evals/rubric.md`).
-- Build executable evaluation fixture (`evals/eval-fixture.ts`).
-- Document real-world transformation example (`examples/mediocre-dashboard-improvement.md`).
-
-## Phase 6: Tooling & Validation (COMPLETED)
-- Implement `scripts/validate-skills.ts` and `scripts/validate-knowledge.ts`.
-- Implement `scripts/audit-project.ts`.
-- Configure GitHub Actions CI workflow (`.github/workflows/ci.yml`).
-
-## Phase 7: Future Expansion (PLANNED)
+## Phase 4: Future Research & Expansion (PLANNED)
 - Expand reference corpora to include Stripe, Linear, and Apple HIG motion systems.
 - Add WebGL / Three.js / Canvas micro-recipes for high-end portfolio showpieces.
-- Integrate headless browser screenshot comparison in `evals/`.
+- Integrate automated visual regression image diffing in Playwright inspector.

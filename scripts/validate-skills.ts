@@ -116,6 +116,6 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   if (hasErrors) {
     process.exit(1);
   } else {
-    console.log("All Pi skills validated successfully!");
+    console.log(`All ${results.length} Pi skills validated successfully!`);
   }
 }

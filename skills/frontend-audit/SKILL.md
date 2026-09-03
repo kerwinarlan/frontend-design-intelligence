@@ -1,16 +1,16 @@
 ---
 name: frontend-audit
-description: Non-destructive visual design, typography, layout, motion, accessibility, and anti-slop audit for web repositories. Returns a prioritized improvement score and action plan using the 14-point visual quality rubric.
+description: Non-destructive visual design, typography, layout, motion, accessibility, and anti-slop audit for web repositories. Returns a prioritized improvement score and action plan using the 14-point visual quality rubric. Respects design briefs passed down from creative-director.
 ---
 
 # Skill: Frontend Audit
 
 ## Description
-Performs a rigorous, non-destructive design analysis of a web application or portfolio project. Scores the codebase against 14 design dimensions and generates a prioritized roadmap of visual and structural improvements.
+Performs a rigorous, non-destructive design analysis of a web application or portfolio project. Scores the codebase against 14 design dimensions and generates a prioritized roadmap of visual and structural improvements. When invoked by `creative-director`, it contextualizes rubric scores relative to the product context (e.g. LGU Portal vs. Portfolio Showpiece).
 
 ## WHEN TO USE
-* User asks for a "design review", "frontend audit", "code critique", "visual feedback", or "how can I make this look better?" without requesting immediate code changes.
-* As the initial phase before executing `/skill:portfolio-polish`.
+* Orchestrated by `/skill:creative-director` or invoked directly.
+* User asks for a "design review", "frontend audit", "code critique", "visual feedback", or "how can I make this look better?"
 
 ## WHEN NOT TO USE
 * User asks for instant automated refactoring or bug fixes.
@@ -20,41 +20,30 @@ Performs a rigorous, non-destructive design analysis of a web application or por
 ## WORKFLOW
 
 ### Step 1: Codebase Scanning
-1. Scan project routes, layouts, tailwind configuration, and primary page components.
-2. Identify font imports, color token definitions, container widths, and animation usage.
+Scan project routes, layouts, tailwind configuration, and primary page components.
 
-### Step 2: 14-Point Rubric Assessment
-Evaluate the project against [evals/rubric.md](evals/rubric.md) across:
-1. Visual Hierarchy
-2. Typography
-3. Layout & Composition
-4. Spacing & Rhythm
-5. Color Restraint
-6. Interaction Quality
-7. Motion Quality
-8. Responsiveness
-9. Accessibility
-10. Content Clarity
-11. Technical Storytelling
-12. Originality
-13. Perceived Craft
-14. Portfolio Readiness
+### Step 2: Contextual 14-Point Rubric Assessment
+Evaluate the project against [evals/rubric.md](evals/rubric.md) and domain context guides in `knowledge/contexts/`.
 
 ### Step 3: Anti-Slop Check
-Scan for forbidden anti-patterns defined in [docs/ANTI_SLOP.md](docs/ANTI_SLOP.md) (e.g. glowing border gradients, ambient purple blur blobs, bento grid overload, generic AI slogans).
+Scan for forbidden anti-patterns defined in [docs/ANTI_SLOP.md](docs/ANTI_SLOP.md).
 
-### Step 4: Report Generation
-Generate a structured score breakdown and prioritized improvement checklist.
+### Step 4: Playwright Visual Capture
+Run Playwright browser inspector (`scripts/browser-inspector.ts`) to capture desktop and mobile screenshots. Check horizontal layout overflow.
+
+### Step 5: Report Generation
+Generate a structured score breakdown, screenshot log, and prioritized improvement checklist.
 
 ---
 
 ## REQUIRED INSPECTION
 * `evals/rubric.md`
 * `docs/ANTI_SLOP.md`
+* `knowledge/contexts/`
 
 ## DECISION RULES
 * Be objective, precise, and candid. Do not inflate scores out of politeness.
-* Focus on actionable code-level remedies (e.g., "Replace `leading-none` on line 42 with `leading-tight`", "Add `tabular-nums` to metric counters").
+* Contextualize scores (e.g., a minimal government portal should not be penalized for lacking experimental 3D motion).
 
 ## OUTPUT
-* A Markdown audit report presenting scores, anti-slop findings, and prioritized action steps.
+* A Markdown audit report presenting scores, anti-slop findings, Playwright screenshot captures, and prioritized action steps.

@@ -1,7 +1,7 @@
 # Frontend Design Intelligence
 
 > **Design intelligence for coding agents.**  
-> A reusable Pi Agent skill system for auditing, redesigning, animating, and portfolio-polishing modern web applications using curated design knowledge, motion patterns, framework recipes, and visual evaluation rubrics.
+> A reusable Pi Agent skill system for translating vague user intent, auditing, redesigning, animating, and portfolio-polishing modern web applications using curated design knowledge, motion patterns, framework recipes, Playwright browser inspection, and visual evaluation rubrics.
 
 [![Pi Agent](https://img.shields.io/badge/Pi_Agent-Supported-blue?style=flat-square)](https://pi.dev)
 [![Agent Skills](https://img.shields.io/badge/Agent_Skills-Standard-green?style=flat-square)](https://agentskills.io)
@@ -18,7 +18,7 @@
 | Platform / Framework | Motion & Animation | Styling & Tooling | Agent Runtime |
 |---|---|---|---|
 | ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) | ![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white) ![GSAP](https://img.shields.io/badge/GSAP-88CE02?style=for-the-badge&logo=greensock&logoColor=white) | ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) | ![Pi](https://img.shields.io/badge/Pi_Agent-000000?style=for-the-badge&logo=node.js&logoColor=white) |
-| ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white) ![Astro](https://img.shields.io/badge/Astro-BC52EE?style=for-the-badge&logo=astro&logoColor=white) | ![Lottie](https://img.shields.io/badge/Lottie-00D1B2?style=for-the-badge&logo=airbnb&logoColor=white) ![CSS Keyframes](https://img.shields.io/badge/CSS_Keyframes-264DE4?style=for-the-badge&logo=html5&logoColor=white) | ![PostCSS](https://img.shields.io/badge/PostCSS-DD3A0A?style=for-the-badge&logo=postcss&logoColor=white) ![Radix UI](https://img.shields.io/badge/Radix_UI-161618?style=for-the-badge&logo=radixui&logoColor=white) | ![Agent Skills](https://img.shields.io/badge/Agent_Skills-059669?style=for-the-badge) |
+| ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white) ![Astro](https://img.shields.io/badge/Astro-BC52EE?style=for-the-badge&logo=astro&logoColor=white) | ![Lottie](https://img.shields.io/badge/Lottie-00D1B2?style=for-the-badge&logo=airbnb&logoColor=white) ![CSS Keyframes](https://img.shields.io/badge/CSS_Keyframes-264DE4?style=for-the-badge&logo=html5&logoColor=white) | ![PostCSS](https://img.shields.io/badge/PostCSS-DD3A0A?style=for-the-badge&logo=postcss&logoColor=white) ![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white) | ![Agent Skills](https://img.shields.io/badge/Agent_Skills-059669?style=for-the-badge) |
 
 ---
 
@@ -26,42 +26,71 @@
 
 AI coding agents excel at generating functional code, but frequently produce visually mediocre, unrefined, or unmistakably AI-generated web interfaces. They default to purple gradients, glowing borders, floating ambient blur orbs, and generic SaaS marketing copy ("Revolutionize your workflow").
 
-`frontend-design-intelligence` equips Pi coding agents with a structured design and motion layer. When invoked on a web repository, it audits typography, layout, color discipline, interaction states, and storytelling—then implements targeted, production-grade polish.
+`frontend-design-intelligence` equips Pi coding agents with a master **Creative Director** and a structured design/motion intelligence layer. You communicate in normal, informal language (*"Make this look legit"*, *"Parang mas premium sana"*, *"This looks vibe-coded"*, *"Make it look like something I can show a mayor"*). The system translates your intent into a structured design strategy, inspects code and browser viewports, and orchestrates specialist skills to execute production-grade polish.
 
-### System Architecture Flow
+### Orchestration Architecture Flow
 
 ```mermaid
 graph TD
-    A[User Request] --> B[Pi Coding Agent]
-    B --> C{Skill Invoked}
+    A[Informal / Layman Prompt] --> B[Creative Director Skill]
+    
+    B --> C[Intent Translation & Design Brief]
+    C --> D[Product Context Classification]
+    D --> E[Playwright Browser Inspection]
+    
+    E --> F{Orchestrated Specialist Skills}
+    F --> G[Frontend Audit]
+    F --> H[Hero Redesign]
+    F --> I[UI Polish]
+    F --> J[Motion Pass]
+    F --> K[Portfolio Polish]
 
-    C -->|/skill:portfolio-polish| D[Portfolio Polish Workflow]
-    C -->|/skill:frontend-audit| E[14-Point Design Audit]
-    C -->|/skill:motion-pass| F[Motion & Spring Pass]
-    C -->|/skill:hero-redesign| G[Hero Section Art Direction]
-    C -->|/skill:ui-polish| H[Component Micro-Polish]
-    C -->|/skill:study-reference| I[Reference Deconstruction]
+    G & H & I & J & K --> L[Domain Context Guides & Anti-Slop Rules]
+    G & H & I & J & K --> M[Knowledge Base & Recipes]
 
-    D & E & F & G & H & I --> J[Anti-Slop Inspection]
-    J --> K[Knowledge & Recipes Base]
-    K --> L[Playwright Browser Inspection]
-    L --> M[Validated Code Changes & Report]
+    M --> N[Playwright Visual QA & Recapture]
+    N --> O[Validated Code Changes & Creative Director Report]
 ```
 
 ---
 
 ## Core Pi Agent Skills
 
-This repository provides six portable Pi skills in `skills/`:
+This repository provides seven portable Pi skills in `skills/`:
 
-| Skill Command | Description | Best Used For |
-|---|---|---|
-| `/skill:portfolio-polish` | Primary orchestration skill. Audits stack, typography, layout, motion, and storytelling before executing targeted code improvements. | Preparing projects for portfolio showcases, demos, client pitches, or senior hiring review. |
-| `/skill:frontend-audit` | Non-destructive design analysis. Scores project against 14 rubric dimensions and flags anti-slop violations. | Initial code reviews and visual health checks without modifying files. |
-| `/skill:motion-pass` | Targeted animation refinement. Adds spring physics, staggered entrances, and microinteractions. | Smoothing out janky transitions, card hover effects, and scroll interactions. |
-| `/skill:hero-redesign` | Specialized hero section art direction. Replaces generic slogans with technical copy, stack badges, and live mockups. | Redesigning landing page headers, developer tool heroes, and project intros. |
-| `/skill:ui-polish` | Micro-refinement for buttons, cards, inputs, tables, forms, modals, and empty/loading states. | Tightening 4px/8px grid spacing, border definitions, and focus rings. |
-| `/skill:study-reference` | Deconstructs external URLs, design references, and motion benchmarks into normalized JSON pattern entries. | Extracting reusable principles from external design systems or web showcases. |
+| Skill Command | Role | Description | Modifies Code? | Best Used For |
+|---|---|---|---|---|
+| `/skill:creative-director` | **Orchestrator** | Master intent-translation and design director skill. Translates vague/layman prompts into structured design briefs, classifies product context, and orchestrates specialist skills. | Yes | Vague or informal design requests (*"Make it look legit"*, *"Vibe-coded"*, *"Pitch to a mayor"*). |
+| `/skill:portfolio-polish` | Specialist | Full frontend improvement workflow. Audits stack, typography, layout, motion, and storytelling before executing targeted code improvements. | Yes | Preparing projects for portfolio showcases, demos, client pitches, or senior hiring review. |
+| `/skill:frontend-audit` | Specialist | Non-destructive design analysis. Scores project against 14 rubric dimensions, captures Playwright screenshots, and flags anti-slop violations. | No | Initial code reviews and visual health checks without modifying files. |
+| `/skill:motion-pass` | Specialist | Targeted animation refinement. Adds spring physics, staggered entrances, microinteractions, and reduced-motion support. | Yes | Smoothing out janky transitions, card hover effects, and scroll interactions. |
+| `/skill:hero-redesign` | Specialist | Specialized hero section art direction. Replaces generic slogans with technical/civic copy, stack badges, and live mockups. | Yes | Redesigning landing page headers, developer tool heroes, and LGU portal intros. |
+| `/skill:ui-polish` | Specialist | Micro-refinement for buttons, cards, inputs, tables, forms, modals, and empty/loading states. | Yes | Tightening 4px/8px grid spacing, border definitions, and focus rings. |
+| `/skill:study-reference` | Specialist | Deconstructs external URLs, design references, and motion benchmarks into normalized JSON pattern entries. | No | Extracting reusable principles from external design systems or web showcases. |
+
+---
+
+## Natural-Language Intent Translation
+
+The `creative-director` skill translates subjective human language into precise technical strategies:
+
+* **"Make this look more legit."** → Increase perceived craft: replace placeholder fonts with Geist/Inter, enforce 1px neutral borders, fix 4px/8px grid alignment, add stack badges and real technical metrics.
+* **"Parang mas premium sana." / "Make it look expensive."** → Establish visual restraint: reduce color count to 1 primary neutral + 1 accent hue, increase vertical whitespace, apply high-contrast typography (`tracking-tight`), add spring hover feedback.
+* **"This still looks vibe-coded."** → Purge AI-slop visual clichés: remove purple/pink radial background orbs, glowing rainbow borders, uniform 24px rounded bento grids, and low-contrast `backdrop-blur`.
+* **"Make it look like something I can show a mayor."** → Establish civic trust & LGU authority: apply municipal service discovery layout, emergency advisory banner, clear contact directory, mobile-first thumb navigation, and WCAG AA contrast.
+* **"Make it more alive but don't overdo it."** → Add functional, restrained motion: spring hover feedback on buttons (`active:scale-[0.98]`), staggered headline word reveals, smooth metric counter rolls, and `prefers-reduced-motion` fallbacks.
+
+---
+
+## Context-Specific Design Intelligence
+
+Located in `knowledge/contexts/`, the system applies domain-specific principles rather than forcing a generic SaaS style onto every project:
+
+* **LGU & Government Portals (`lgu-government.md`)**: TRUST > NOVELTY, SERVICE DISCOVERY > MARKETING, ACCESSIBILITY > SPECTACLE, LOCAL IDENTITY > GENERIC STARTUP BRANDING, MOBILE USABILITY > FANCY DESKTOP EFFECTS.
+* **Analytics & Data Dashboards (`dashboard.md`)**: High density, `font-mono tabular-nums` numbers, chart entrances, slide-over detail drawers.
+* **Developer Tools & CLI Web Apps (`developer-tool.md`)**: Terminal code blocks, copy micro-interactions, dark mode `#09090B`, monospace typography.
+* **AI / ML Products (`ai-ml-product.md`)**: Telemetry over marketing hype, P99 latency ms, confidence score %, transparent prompt streams.
+* **Developer Portfolios (`portfolio.md`)**: Tech stack badges, architecture diagrams, measured performance metrics, live interactive demo frames.
 
 ---
 
@@ -78,17 +107,13 @@ This system strictly enforces design restraint. It flags and eliminates common A
 
 Jitter (`https://jitter.video/`) serves as the initial motion research corpus for this repository. We reverse-engineered public Jitter UI templates across buttons, toggles, navigation rails, device showcases, and kinetic text into framework-agnostic web primitive recipes.
 
-All extracted patterns are stored as structured JSON records in `knowledge/references/jitter/` detailing:
-* Motion primitives (`scale`, `translateY`, `clip-path`)
-* Choreography & stagger intervals
-* Damped spring parameters (`stiffness`, `damping`)
-* CSS, Framer Motion, GSAP, and Lottie feasibility
+All extracted patterns are stored as structured JSON records in `knowledge/references/jitter/` detailing motion primitives, choreography, spring parameters, and framework feasibility.
 
 ---
 
 ## 14-Dimension Visual Quality Rubric
 
-Projects are scored out of 100 points across 14 dimensions defined in [`evals/rubric.md`](evals/rubric.md):
+Projects are evaluated out of 100 points across 14 dimensions defined in [`evals/rubric.md`](evals/rubric.md):
 
 1. **Visual Hierarchy** (/10)
 2. **Typography** (/10)
@@ -109,32 +134,43 @@ Projects are scored out of 100 points across 14 dimensions defined in [`evals/ru
 
 ## Installation & Usage
 
-### 1. Project-Local Usage (Cloned Repository)
-Working directly inside this repository exposes all skills to Pi automatically via `.pi/skills`:
+### 1. Global Installation (Recommended)
+Makes the skill package available across all Pi projects on your computer:
 ```bash
-# In interactive Pi session:
-/skill:frontend-audit
-/skill:portfolio-polish
-```
-
-### 2. Installing into Other Web Projects
-To use these skills in any other project on your computer:
-
-```bash
-# Project-local installation (writes to .pi/settings.json in current project):
-pi install git:github.com/kerwinarlan/frontend-design-intelligence -l
-
-# Global installation (writes to ~/.pi/agent/settings.json for all sessions):
 pi install git:github.com/kerwinarlan/frontend-design-intelligence
 ```
 
-### 3. CLI Project Audit & Browser Inspection
-Run the included standalone audit CLI or Playwright browser inspector on any local frontend directory:
+### 2. Project-Local Installation
+Adds the skills to the current project's `.pi/settings.json`:
 ```bash
-# Audit codebase static structure & anti-slop patterns:
+pi install git:github.com/kerwinarlan/frontend-design-intelligence -l
+```
+
+### 3. Quick Start Examples
+
+#### Natural Language Request (Creative Director)
+```text
+/skill:creative-director
+
+Bro this still looks super vibe-coded. Make it feel like a real LGU portal I can pitch to a mayor, but keep it modern and portfolio-worthy. Don't overdo animations.
+```
+
+#### Non-Destructive Design Audit
+```text
+/skill:frontend-audit
+```
+
+#### Targeted Hero Redesign
+```text
+/skill:hero-redesign
+```
+
+### 4. CLI Audit & Browser Inspection
+```bash
+# Static codebase & anti-slop audit CLI:
 npm run audit -- /path/to/target-project
 
-# Run Playwright browser inspection & screenshot capture:
+# Playwright browser inspection & screenshot capture:
 npx tsx scripts/browser-inspector.ts http://localhost:3000
 ```
 
@@ -151,13 +187,16 @@ frontend-design-intelligence/
 ├── package-lock.json
 ├── tsconfig.json
 │
-├── skills/                     # Canonical Pi Agent Skills
-│   ├── portfolio-polish/SKILL.md
-│   ├── frontend-audit/SKILL.md
-│   ├── motion-pass/SKILL.md
-│   ├── hero-redesign/SKILL.md
-│   ├── ui-polish/SKILL.md
-│   └── study-reference/SKILL.md
+├── skills/                     # Canonical Pi Agent Skills (7 Skills)
+│   ├── creative-director/      # Master Intent-Translation & Orchestration Skill
+│   │   ├── SKILL.md
+│   │   └── references/         # Brief Schema, Intent Guide, Intervention Levels
+│   ├── portfolio-polish/
+│   ├── frontend-audit/
+│   ├── motion-pass/
+│   ├── hero-redesign/
+│   ├── ui-polish/
+│   └── study-reference/
 │
 ├── .pi/                        # Local Project Config
 │   ├── settings.json
@@ -173,6 +212,7 @@ frontend-design-intelligence/
 │   └── CONTRIBUTING_KNOWLEDGE.md
 │
 ├── knowledge/
+│   ├── contexts/               # LGU Portal, Dashboard, DevTool, AI/ML, Portfolio Context Guides
 │   ├── fundamentals/           # Typography, Layout, Responsive, Color, Motion, etc.
 │   ├── patterns/               # Heroes, Cards, Navigation, Dashboards, Microinteractions
 │   ├── references/jitter/      # Structured JSON reference databases & STATUS.md
@@ -181,7 +221,7 @@ frontend-design-intelligence/
 ├── evals/
 │   ├── rubric.md               # 14-Dimension Visual Quality Rubric
 │   ├── eval-fixture.ts         # Code Evaluation Logic
-│   ├── fixtures/               # Runnable Before vs After Web Application Fixture
+│   ├── fixtures/               # Runnable Before vs After Web Application Fixture & Intent Tests
 │   └── real-projects/          # Non-destructive audits of real repositories
 │
 ├── scripts/
@@ -199,7 +239,7 @@ frontend-design-intelligence/
 
 ## Development & Verification
 
-Run the validation suite to verify all Pi skills, YAML frontmatter, JSON schemas, and browser fixtures:
+Run the validation suite to verify all 7 Pi skills, YAML frontmatter, JSON schemas, and browser fixtures:
 ```bash
 npm run validate
 npx tsx evals/fixtures/run-fixture-eval.ts
