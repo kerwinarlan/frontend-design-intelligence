@@ -9,7 +9,7 @@ interface SkillValidationResult {
 }
 
 export function validateSkills(): SkillValidationResult[] {
-  const skillsDir = path.resolve(".pi/skills");
+  const skillsDir = path.resolve("skills");
   const results: SkillValidationResult[] = [];
 
   if (!fs.existsSync(skillsDir)) {

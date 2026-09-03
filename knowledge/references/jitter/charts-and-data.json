@@ -1,0 +1,81 @@
+[
+  {
+    "id": "jitter-chart-001",
+    "name": "Progress Ring Metric Counter",
+    "source_url": "https://jitter.video/templates/counters/",
+    "category": "charts-and-data",
+    "tags": ["progress-ring", "counter", "svg-dashoffset", "metric", "framer-motion"],
+    "composition": "Circular SVG progress ring enclosing a centered numeric percentage metric ('84%').",
+    "focal_point": "Arc perimeter drawing smoothly while center counter rolls up.",
+    "layout_behavior": "Centered circular container in KPI card or dashboard widget.",
+    "typography_characteristics": "Bold tabular figures monospace font (`font-mono tabular-nums`) at center.",
+    "animation_primitives": ["stroke-dashoffset", "scale", "opacity", "translateY"],
+    "choreography": "Arc stroke fills from 0 to target over 800ms while center metric counter rolls up in parallel.",
+    "why_it_works": "Dual motion reinforcement—the outer arc provides a visual spatial meter while the inner digits provide exact precision.",
+    "use_cases": ["Dashboard completion metrics", "Storage / Memory usage KPI", "Portfolio benchmark performance score"],
+    "observed_properties": {
+      "stroke_dasharray": "283 (for r=45 circle)",
+      "stroke_dashoffset": "animates from 283 down to target (e.g. 45)",
+      "stagger": "number counter rolls up in parallel with ring stroke fill"
+    },
+    "inferred_design_principles": {
+      "why_it_works": "Dual motion reinforcement—the outer arc provides a visual spatial meter while the inner digits provide exact precision.",
+      "use_cases": ["Dashboard completion metrics", "Storage / Memory usage KPI", "Portfolio benchmark performance score"],
+      "avoid_when": ["Non-numeric status values", "Extremely small inline icons (<24px)"]
+    },
+    "implementation_recommendations": {
+      "css_strategy": "Animate `stroke-dashoffset` using CSS transition or Framer Motion `animate` prop.",
+      "framer_motion": "useSpring on `strokeDashoffset` combined with `MetricCounter` component.",
+      "reduced_motion": "Instantly set target `strokeDashoffset` and final counter number without animation."
+    },
+    "feasibility": {
+      "css": true,
+      "motion": true,
+      "gsap": true,
+      "lottie": true
+    },
+    "portfolio_applications": "Displaying test coverage percentage, Lighthouse performance score, or deployment readiness.",
+    "related_patterns": ["jitter-text-002", "animated-metrics-counter"],
+    "notes": "Extracted from Jitter Counter & Progress Ring templates."
+  },
+  {
+    "id": "jitter-chart-002",
+    "name": "Bar Chart Staggered Height Entrance",
+    "source_url": "https://jitter.video/templates/charts/",
+    "category": "charts-and-data",
+    "tags": ["bar-chart", "stagger", "scaleY", "data-viz"],
+    "composition": "Row of vertical bar chart columns scaling up sequentially from baseline.",
+    "focal_point": "Individual bar columns rising from scaleY(0) to target height.",
+    "layout_behavior": "Flex/Grid container with bottom alignment (`items-end`).",
+    "typography_characteristics": "12px mono labels below each bar column.",
+    "animation_primitives": ["scaleY", "opacity", "translateY"],
+    "choreography": "Each vertical bar column scales up from 0 to 1 with 40ms stagger delay between adjacent bars.",
+    "why_it_works": "Sequential bar entrance draws the viewer's eye chronologically across the time axis (e.g. Jan -> Dec).",
+    "use_cases": ["Analytics traffic charts", "Monthly revenue or throughput graphs", "Benchmark comparison bars"],
+    "observed_properties": {
+      "transform_origin": "bottom center",
+      "scaleY": "0 -> 1",
+      "stagger_delay": "40ms between adjacent columns",
+      "easing": "cubic-bezier(0.16, 1, 0.3, 1)"
+    },
+    "inferred_design_principles": {
+      "why_it_works": "Sequential bar entrance draws the viewer's eye chronologically across the time axis (e.g. Jan -> Dec).",
+      "use_cases": ["Analytics traffic charts", "Monthly revenue or throughput graphs", "Benchmark comparison bars"],
+      "avoid_when": ["Real-time updating sparklines where whole chart shouldn't re-enter"]
+    },
+    "implementation_recommendations": {
+      "css_strategy": "Tailwind `origin-bottom transition-transform duration-500` with staggered `delay-[Nms]` classes.",
+      "framer_motion": "Variants with `staggerChildren: 0.04` and `scaleY` transform.",
+      "reduced_motion": "Set `scaleY: 1` instantly; fade opacity in 150ms."
+    },
+    "feasibility": {
+      "css": true,
+      "motion": true,
+      "gsap": true,
+      "lottie": false
+    },
+    "portfolio_applications": "Weekly API request volume or performance latency benchmark comparisons.",
+    "related_patterns": ["jitter-chart-001"],
+    "notes": "Extracted from Jitter chart template suite."
+  }
+]

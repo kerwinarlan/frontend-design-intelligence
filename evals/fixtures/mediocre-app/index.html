@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mediocre Model Telemetry</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-purple-950 text-white min-h-screen p-8">
+  <!-- BEFORE: Mediocre Hero -->
+  <div class="text-center py-12">
+    <h1 class="text-5xl font-extrabold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
+      Revolutionize Your ML Analytics
+    </h1>
+    <p class="text-purple-200 mt-4 text-lg">
+      Powered by AI Next Generation Machine Learning Platform
+    </p>
+    <button class="mt-6 px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl font-bold shadow-[0_0_30px_rgba(236,72,153,0.5)]">
+      Get Started Now
+    </button>
+  </div>
+
+  <!-- BEFORE: Mediocre Bento Cards -->
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 my-12">
+    <div class="bg-white/10 backdrop-blur-xl p-8 rounded-3xl border border-pink-500/50 shadow-2xl">
+      <h2 class="text-2xl font-bold">Total Inferences</h2>
+      <div id="metric-inferences" class="text-5xl font-extrabold text-pink-400 mt-4">124589</div>
+    </div>
+    <div class="bg-white/10 backdrop-blur-xl p-8 rounded-3xl border border-purple-500/50 shadow-2xl">
+      <h2 class="text-2xl font-bold">Latency (P99)</h2>
+      <div id="metric-latency" class="text-5xl font-extrabold text-purple-400 mt-4">14.2 ms</div>
+    </div>
+    <div class="bg-white/10 backdrop-blur-xl p-8 rounded-3xl border border-indigo-500/50 shadow-2xl">
+      <h2 class="text-2xl font-bold">Model Accuracy</h2>
+      <div id="metric-accuracy" class="text-5xl font-extrabold text-indigo-400 mt-4">99.4%</div>
+    </div>
+  </div>
+</body>
+</html>

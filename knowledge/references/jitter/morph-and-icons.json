@@ -1,0 +1,80 @@
+[
+  {
+    "id": "jitter-morph-001",
+    "name": "Dot Matrix to Text Morph",
+    "source_url": "https://jitter.video/templates/morph/",
+    "category": "morph-and-icons",
+    "tags": ["morph", "dots", "text-reveal", "lottie", "svg"],
+    "composition": "A grid of circular dots rearranging and expanding into crisp typography.",
+    "focal_point": "Individual dots translating and scaling into letterform strokes.",
+    "layout_behavior": "Centered brand or loading state hero element.",
+    "typography_characteristics": "Bold geometric sans-serif logo or brand text.",
+    "animation_primitives": ["path-morph", "scale", "opacity", "translateX", "translateY"],
+    "choreography": "Grid of circular dots rearranges over 1400ms and expands into letterform strokes.",
+    "why_it_works": "Creates a memorable 'earned' brand reveal transition during splash screens or page initialization.",
+    "use_cases": ["Initial portfolio splash screen", "Interactive AI processing state indicator"],
+    "observed_properties": {
+      "path_interpolation": "SVG path morph or Lottie vector keyframes",
+      "duration": "1400ms sequence",
+      "easing": "cubic-bezier(0.25, 1, 0.5, 1)"
+    },
+    "inferred_design_principles": {
+      "why_it_works": "Creates a memorable 'earned' brand reveal transition during splash screens or page initialization.",
+      "use_cases": ["Initial portfolio splash screen", "Interactive AI processing state indicator"],
+      "avoid_when": ["Standard page navigation links", "Frequent micro-interactions"]
+    },
+    "implementation_recommendations": {
+      "css_strategy": "Best implemented via Lottie JSON export or GSAP MorphSVG Plugin for complex vector paths.",
+      "lottie": "Export Jitter template as Lottie JSON; trigger via `@dotlottie/react-player`.",
+      "reduced_motion": "Display target logo text directly."
+    },
+    "feasibility": {
+      "css": false,
+      "motion": false,
+      "gsap": true,
+      "lottie": true
+    },
+    "portfolio_applications": "Initial splash loader for high-craft portfolio case studies.",
+    "related_patterns": ["jitter-text-001"],
+    "notes": "Extracted from Jitter Morph template collection."
+  },
+  {
+    "id": "jitter-morph-002",
+    "name": "Animated Icon State Morph",
+    "source_url": "https://jitter.video/templates/icons/",
+    "category": "morph-and-icons",
+    "tags": ["icon", "morph", "toggle", "microinteraction"],
+    "composition": "Single SVG icon morphing path shapes (e.g., Hamburger menu -> Close X icon, or Play -> Pause).",
+    "focal_point": "Inner stroke lines rotating and scaling into new glyph form.",
+    "layout_behavior": "Inline button control (44x44px target).",
+    "typography_characteristics": "N/A (Icon graphic).",
+    "animation_primitives": ["rotate", "scale", "opacity", "stroke-dashoffset"],
+    "choreography": "Inner stroke lines rotate 90deg and scale into target icon shape over 200ms.",
+    "why_it_works": "Provides continuous physical identity between two mutually exclusive UI states.",
+    "use_cases": ["Mobile menu toggle", "Audio/video player controls", "Copy-to-clipboard checkmark swap"],
+    "observed_properties": {
+      "rotation": "0deg -> 90deg",
+      "opacity_fade": "subtle stroke segment swap",
+      "duration": "200ms"
+    },
+    "inferred_design_principles": {
+      "why_it_works": "Provides continuous physical identity between two mutually exclusive UI states.",
+      "use_cases": ["Mobile menu toggle", "Audio/video player controls", "Copy-to-clipboard checkmark swap"],
+      "avoid_when": ["Static decorative icons"]
+    },
+    "implementation_recommendations": {
+      "css_strategy": "CSS transition on `transform: rotate` + `opacity` between stacked SVG paths.",
+      "framer_motion": "Animate `d` path attribute or CSS rotate/scale transform.",
+      "reduced_motion": "Instant icon swap without rotation."
+    },
+    "feasibility": {
+      "css": true,
+      "motion": true,
+      "gsap": true,
+      "lottie": true
+    },
+    "portfolio_applications": "Interactive menu toggles, search modals, and copy button confirmations.",
+    "related_patterns": ["jitter-btn-002"],
+    "notes": "Extracted from Jitter Icon morphing templates."
+  }
+]

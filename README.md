@@ -44,14 +44,15 @@ graph TD
 
     D & E & F & G & H & I --> J[Anti-Slop Inspection]
     J --> K[Knowledge & Recipes Base]
-    K --> L[Validated Code Changes & Report]
+    K --> L[Playwright Browser Inspection]
+    L --> M[Validated Code Changes & Report]
 ```
 
 ---
 
 ## Core Pi Agent Skills
 
-This repository provides six local Pi skills in `.pi/skills/`:
+This repository provides six portable Pi skills in `skills/`:
 
 | Skill Command | Description | Best Used For |
 |---|---|---|
@@ -87,7 +88,7 @@ All extracted patterns are stored as structured JSON records in `knowledge/refer
 
 ## 14-Dimension Visual Quality Rubric
 
-Projects are scored out of 100 points across 14 dimensions defined in `evals/rubric.md`:
+Projects are scored out of 100 points across 14 dimensions defined in [`evals/rubric.md`](evals/rubric.md):
 
 1. **Visual Hierarchy** (/10)
 2. **Typography** (/10)
@@ -108,25 +109,33 @@ Projects are scored out of 100 points across 14 dimensions defined in `evals/rub
 
 ## Installation & Usage
 
-### 1. Using Directly in This Repository
-Cloning this repository gives Pi instant access to all skills in `.pi/skills/`:
+### 1. Project-Local Usage (Cloned Repository)
+Working directly inside this repository exposes all skills to Pi automatically via `.pi/skills`:
 ```bash
 # In interactive Pi session:
 /skill:frontend-audit
 /skill:portfolio-polish
 ```
 
-### 2. Installing into Existing Projects
-You can install this repository as a project-level skill package using Pi:
+### 2. Installing into Other Web Projects
+To use these skills in any other project on your computer:
+
 ```bash
-# From within any target web project:
+# Project-local installation (writes to .pi/settings.json in current project):
+pi install git:github.com/kerwinarlan/frontend-design-intelligence -l
+
+# Global installation (writes to ~/.pi/agent/settings.json for all sessions):
 pi install git:github.com/kerwinarlan/frontend-design-intelligence
 ```
 
-### 3. CLI Project Audit Tool
-Run the included standalone audit CLI on any local frontend directory:
+### 3. CLI Project Audit & Browser Inspection
+Run the included standalone audit CLI or Playwright browser inspector on any local frontend directory:
 ```bash
+# Audit codebase static structure & anti-slop patterns:
 npm run audit -- /path/to/target-project
+
+# Run Playwright browser inspection & screenshot capture:
+npx tsx scripts/browser-inspector.ts http://localhost:3000
 ```
 
 ---
@@ -139,17 +148,20 @@ frontend-design-intelligence/
 ├── AGENTS.md
 ├── LICENSE
 ├── package.json
+├── package-lock.json
 ├── tsconfig.json
 │
-├── .pi/
+├── skills/                     # Canonical Pi Agent Skills
+│   ├── portfolio-polish/SKILL.md
+│   ├── frontend-audit/SKILL.md
+│   ├── motion-pass/SKILL.md
+│   ├── hero-redesign/SKILL.md
+│   ├── ui-polish/SKILL.md
+│   └── study-reference/SKILL.md
+│
+├── .pi/                        # Local Project Config
 │   ├── settings.json
-│   └── skills/
-│       ├── portfolio-polish/SKILL.md
-│       ├── frontend-audit/SKILL.md
-│       ├── motion-pass/SKILL.md
-│       ├── hero-redesign/SKILL.md
-│       ├── ui-polish/SKILL.md
-│       └── study-reference/SKILL.md
+│   └── skills -> ../skills     # Symlink to root skills/
 │
 ├── docs/
 │   ├── ARCHITECTURE.md
@@ -161,22 +173,22 @@ frontend-design-intelligence/
 │   └── CONTRIBUTING_KNOWLEDGE.md
 │
 ├── knowledge/
-│   ├── fundamentals/         # Typography, Layout, Responsive, Color, Motion, etc.
-│   ├── patterns/             # Heroes, Cards, Navigation, Dashboards, Microinteractions
-│   ├── references/jitter/    # Structured JSON reference databases
-│   └── recipes/              # Framework-aware code recipes (React, Tailwind, Motion, GSAP)
+│   ├── fundamentals/           # Typography, Layout, Responsive, Color, Motion, etc.
+│   ├── patterns/               # Heroes, Cards, Navigation, Dashboards, Microinteractions
+│   ├── references/jitter/      # Structured JSON reference databases & STATUS.md
+│   └── recipes/                # Framework-aware code recipes (React, Tailwind, Motion, GSAP)
 │
 ├── evals/
-│   ├── rubric.md
-│   └── eval-fixture.ts
-│
-├── examples/
-│   └── mediocre-dashboard-improvement.md
+│   ├── rubric.md               # 14-Dimension Visual Quality Rubric
+│   ├── eval-fixture.ts         # Code Evaluation Logic
+│   ├── fixtures/               # Runnable Before vs After Web Application Fixture
+│   └── real-projects/          # Non-destructive audits of real repositories
 │
 ├── scripts/
-│   ├── audit-project.ts
-│   ├── validate-skills.ts
-│   └── validate-knowledge.ts
+│   ├── audit-project.ts        # CLI Audit Tool
+│   ├── browser-inspector.ts    # Playwright Screenshot & Overflow Inspector
+│   ├── validate-skills.ts      # Pi Skill Specification Validator
+│   └── validate-knowledge.ts   # JSON Reference Schema Validator
 │
 └── .github/
     ├── REPOSITORY_METADATA.md
@@ -187,9 +199,10 @@ frontend-design-intelligence/
 
 ## Development & Verification
 
-Run the validation suite to verify all Pi skills, YAML frontmatter, and JSON schema definitions:
+Run the validation suite to verify all Pi skills, YAML frontmatter, JSON schemas, and browser fixtures:
 ```bash
 npm run validate
+npx tsx evals/fixtures/run-fixture-eval.ts
 ```
 
 ---

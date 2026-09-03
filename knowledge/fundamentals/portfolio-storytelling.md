@@ -1,32 +1,50 @@
 # Fundamental Domain: Portfolio Storytelling & Case Study Craft
 
-A great portfolio project is an evidence-backed technical case study that convinces senior reviewers of your engineering depth.
+A great portfolio project is an evidence-backed technical case study that convinces senior engineering reviewers, founders, and hiring managers of your engineering depth and craftsmanship.
 
-## 1. The Portfolio Hero Section
-A portfolio project hero must answer three questions within 5 seconds:
-1. **WHAT IS IT?** Clear name and specific one-line tagline.
-2. **WHAT DID YOU BUILD IT WITH?** Explicit stack badges (e.g., TypeScript, Next.js 15, WebSockets, Tailwind CSS, PostgreSQL).
-3. **CAN I SEE IT WORKING NOW?** Live interactive demo, recorded device mockup video, or direct GitHub/Live link.
+---
 
-## 2. Structure of an Unforgettable Case Study
-Move beyond basic screenshots by providing structural depth:
+## Principle 1: The 5-Second Technical Hero Value Proposition
+* **Why**: Reviewers scan dozens of portfolio links daily. A hero section must communicate core technical identity instantly without requiring scroll.
+* **Symptoms of Poor Implementation**: Vague marketing copy ("Building the future of software with AI"); missing stack details; no live preview or demo link.
+* **Appropriate Implementation**: A technical hero section MUST answer three questions within 5 seconds:
+  1. **WHAT IS IT?**: Direct, specific name and tagline (e.g. "Sub-millisecond Edge Inference Engine").
+  2. **WHAT IS THE STACK?**: Explicit stack pills (e.g. Next.js 15, Rust, WebAssembly, Tailwind CSS, PostgreSQL).
+  3. **CAN I SEE IT WORKING NOW?**: Live interactive demo frame, video loop, or direct Live App / GitHub links.
 
-### Section A: The Problem & Context
-* What problem existed? Who was affected? What were the performance or UX bottlenecks?
+---
 
-### Section B: Architecture & Technical Decisions
-* Provide a clear visual architecture diagram (e.g., SVG diagram or clean flowchart using Mermaid/SVG).
-* Explain 2-3 key technical tradeoffs (e.g., "Why we chose server-sent events over WebSockets for lightweight notifications").
+## Principle 2: Architecture & Decision Transparency
+* **Why**: Senior reviewers care more about *why* you built something and *what tradeoffs* you navigated than mere visual screenshots.
+* **Symptoms of Poor Implementation**: Portfolio case study consisting of 10 static screenshots with zero explanation of engineering architecture or data flow.
+* **Appropriate Implementation**: Structure the presentation around **The Engineering Narrative**:
+  * **Problem Context**: What bottleneck or technical challenge existed?
+  * **Architecture Diagram**: Clean visual flowchart showing request flow, queue processing, or edge routing.
+  * **Key Tradeoffs**: Explicitly explain 2-3 engineering decisions (e.g. "Why we chose SQLite over Postgres for edge latency").
+  * **Code Snippets**: Highlight 1-2 core algorithmic or pipeline functions.
 
-### Section C: Interactive Feature Deep Dives
-* Embed interactive micro-demos, code snippets, or video loops showing edge-case handling.
+---
 
-### Section D: Measured Evidence & Impact
-* Include quantifiable results whenever possible:
-  * "Reduced API response latency from 450ms to 85ms."
-  * "Achieved 100/100 Lighthouse performance score across mobile and desktop."
-  * "Processed 10,000 synthetic records with zero frame drops."
+## Principle 3: Measured Evidence & Quantifiable Impact
+* **Why**: Numeric evidence establishes credibility and separates actual working software from non-functional UI mockups.
+* **Symptoms of Poor Implementation**: Subjective claims ("Super fast performance", "Highly scalable architecture") without data.
+* **Appropriate Implementation**: Provide exact, reproducible metrics:
+  * "Reduced initial bundle size by **42%** (380kB -> 220kB)."
+  * "P99 API response latency measured at **18ms** under 1,000 synthetic requests/sec."
+  * "Achieved **100/100** Lighthouse performance score across mobile and desktop."
 
-## 3. Avoiding Fake Portfolio Fluff
-* **Banned**: Fake client logos, fabricated star ratings, "Trusted by 10,000+ teams" on personal projects.
-* **Preferred**: Authentic GitHub star count, open-source test coverage metrics, real benchmark graphs, personal reflection notes on technical lessons learned.
+---
+
+## Principle 4: Authenticity vs. Fake Marketing Fluff
+* **Why**: Fabricated social proof damages candidate credibility during technical interview deep-dives.
+* **Symptoms of Poor Implementation**: Personal student or side projects featuring fake "Trusted by 10,000+ teams" banners, fake client logos, or fake star ratings.
+* **Appropriate Implementation**: Replace fake social proof with authentic developer evidence:
+  * Actual GitHub star count and open-source license badge.
+  * Real automated test suite coverage metrics (e.g. "86% Unit Test Coverage").
+  * Reflection notes on technical lessons learned and known future limitations.
+
+---
+
+## Provenance & Standards References
+* Senior Engineering Hiring Rubrics (FAANG / Vercel / Stripe / Linear Case Study Standards)
+* Staff Engineer (Will Larson) - Technical Writing & Decision Documentation
