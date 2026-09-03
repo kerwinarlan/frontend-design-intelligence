@@ -1,0 +1,54 @@
+{
+  "name": "frontend-design-intelligence",
+  "version": "1.0.0",
+  "description": "Design, motion, UI/UX, and portfolio polish intelligence system for coding agents.",
+  "main": "dist/index.js",
+  "type": "module",
+  "keywords": [
+    "pi-package",
+    "pi-skills",
+    "frontend-design",
+    "motion-design",
+    "ui-ux",
+    "portfolio-polish",
+    "jitter",
+    "react",
+    "nextjs",
+    "tailwindcss",
+    "gsap",
+    "lottie",
+    "framer-motion"
+  ],
+  "author": "Kerwin Arlan <kerwinarlan@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kerwinarlan/frontend-design-intelligence.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kerwinarlan/frontend-design-intelligence/issues"
+  },
+  "homepage": "https://github.com/kerwinarlan/frontend-design-intelligence#readme",
+  "scripts": {
+    "validate": "npm run validate:skills && npm run validate:knowledge",
+    "validate:skills": "tsx scripts/validate-skills.ts",
+    "validate:knowledge": "tsx scripts/validate-knowledge.ts",
+    "audit": "tsx scripts/audit-project.ts",
+    "test": "npm run validate"
+  },
+  "pi": {
+    "skills": [
+      "./.pi/skills/portfolio-polish",
+      "./.pi/skills/frontend-audit",
+      "./.pi/skills/motion-pass",
+      "./.pi/skills/hero-redesign",
+      "./.pi/skills/ui-polish",
+      "./.pi/skills/study-reference"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

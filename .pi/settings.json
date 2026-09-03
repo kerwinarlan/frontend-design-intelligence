@@ -1,0 +1,11 @@
+{
+  "enableSkillCommands": true,
+  "skills": [
+    "./.pi/skills/portfolio-polish",
+    "./.pi/skills/frontend-audit",
+    "./.pi/skills/motion-pass",
+    "./.pi/skills/hero-redesign",
+    "./.pi/skills/ui-polish",
+    "./.pi/skills/study-reference"
+  ]
+}
