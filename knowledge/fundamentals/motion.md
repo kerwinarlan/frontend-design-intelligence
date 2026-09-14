@@ -67,8 +67,15 @@ Motion is a functional tool for spatial continuity, attention guidance, and stat
   ```
 
 ---
-
-## Provenance & Standards References
+ 
+ ## Principle 5: Procedural Canvas vs DOM Animation
+ * **Why**: When moving thousands of elements or rendering complex mathematical geometry, DOM nodes cause layout thrashing.
+ * **Rule**: Use Canvas 2D or WebGL when rendering >100 simultaneous moving objects, parametric ribbons, particle fields, or raymarched shaders.
+ * **Reference**: See `knowledge/fundamentals/procedural-canvas-rendering.md`.
+ 
+ ---
+ 
+ ## Provenance & Standards References
 * W3C WCAG 2.2 Success Criterion 2.3.3 - Animation from Interactions
 * Material Design 3 Motion Guidelines & Apple HIG Motion Standards
 * MDN Web Docs - Hardware Accelerated CSS Animations

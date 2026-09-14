@@ -39,6 +39,7 @@ Implement staggered text reveals (`knowledge/recipes/staggered-text-reveal.md`) 
 
 ## REQUIRED INSPECTION
 * `knowledge/patterns/heroes.md`
+* `knowledge/patterns/canvas-hero-backgrounds.md`
 * `docs/ANTI_SLOP.md`
 * `knowledge/contexts/`
 

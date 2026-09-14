@@ -29,7 +29,7 @@ This is the master orchestration and intent-translation skill for `frontend-desi
 ## WORKFLOW
 
 ### Phase 1: Interpret User Intent
-Read [skills/creative-director/references/intent-translation.md](skills/creative-director/references/intent-translation.md). Parse the prompt into:
+Read [references/intent-translation.md](references/intent-translation.md). Parse the prompt into:
 * Explicit requests vs. Implied goals
 * Perceptual goals (e.g., Trustworthy, Premium, Civic, Authoritative, Competent, Modern)
 * Dislikes & Constraints
@@ -41,7 +41,7 @@ Read [skills/creative-director/references/intent-translation.md](skills/creative
 * Understand what the software *actually does*. Identify technically/functionally critical areas.
 
 ### Phase 3: Classify Product Context
-Read [skills/creative-director/references/context-selection.md](skills/creative-director/references/context-selection.md). Classify into relevant contexts:
+Read [references/context-selection.md](references/context-selection.md). Classify into relevant contexts:
 * LGU / Municipal Portal (`knowledge/contexts/lgu-government.md`)
 * Public Information Portal (`knowledge/contexts/public-service-portal.md`)
 * Portfolio / Case Study (`knowledge/contexts/portfolio.md`)
@@ -62,19 +62,19 @@ Run Playwright browser inspection (`scripts/browser-inspector.ts`). Capture Desk
 Execute 14-point visual audit against [evals/rubric.md](evals/rubric.md) and [docs/ANTI_SLOP.md](docs/ANTI_SLOP.md).
 
 ### Phase 8: Create Structured Design Brief
-Generate structured YAML brief per [skills/creative-director/references/design-brief-schema.md](skills/creative-director/references/design-brief-schema.md).
+Generate structured YAML brief per [references/design-brief-schema.md](references/design-brief-schema.md).
 
 ### Phase 9: Confidence Model
 Label assumptions as HIGH, MEDIUM, or LOW confidence. Low-confidence non-essential details must not become unverified facts.
 
 ### Phase 10: Determine Design Intervention Level
-Read [skills/creative-director/references/intervention-levels.md](skills/creative-director/references/intervention-levels.md):
+Read [references/intervention-levels.md](references/intervention-levels.md):
 * **Level 1 (Polish)**: Component micro-refinements, spacing, focus rings, tabular figures.
 * **Level 2 (Redirection)**: Visual system overhaul, hero redesign, card consolidation, service hierarchy.
 * **Level 3 (Showpiece)**: Full art-directed transformation (3D device tilt, kinetic typography, sticky storytelling).
 
 ### Phase 11: Delegate to Specialist Skills
-Read [skills/creative-director/references/orchestration-rules.md](skills/creative-director/references/orchestration-rules.md). Orchestrate existing specialist skills:
+Read [references/orchestration-rules.md](references/orchestration-rules.md). Orchestrate existing specialist skills:
 * `frontend-audit` -> `hero-redesign` -> `ui-polish` -> `motion-pass` -> `portfolio-polish`
 
 ### Phase 12: Design System Direction
@@ -113,7 +113,7 @@ Return concise Creative Director Report presenting interpreted intent, brief sum
 
 ## REQUIRED INSPECTION
 Before editing any code, inspect:
-1. `skills/creative-director/references/`
+1. `references/`
 2. `knowledge/contexts/`
 3. `docs/ANTI_SLOP.md`
 4. `evals/rubric.md`

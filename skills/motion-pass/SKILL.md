@@ -20,7 +20,7 @@ Refines or introduces functional web animation, transitions, micro-interactions,
 ## WORKFLOW
 
 ### Step 1: Motion Audit
-Read [knowledge/fundamentals/motion.md](knowledge/fundamentals/motion.md) and inspect existing animations. Identify unhandled states and non-GPU property animations.
+Read [knowledge/fundamentals/motion.md](knowledge/fundamentals/motion.md) and [knowledge/fundamentals/procedural-canvas-rendering.md](knowledge/fundamentals/procedural-canvas-rendering.md). Inspect existing animations. Identify unhandled states and non-GPU property animations.
 
 ### Step 2: Contextual Pattern Selection
 Select relevant patterns from `knowledge/references/jitter/` and code recipes in `knowledge/recipes/` that match the product context (`knowledge/contexts/`).
