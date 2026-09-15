@@ -41,6 +41,9 @@ Run Playwright browser inspector (`scripts/browser-inspector.ts`) to verify smoo
 ## DECISION RULES
 * **MORE ANIMATION != BETTER DESIGN**. Motion MUST serve spatial continuity, feedback, attention guidance, or restrained delight.
 * Respect domain restraint (e.g. zero continuous decorative background movement on civic or healthcare portals).
+* **Sticky Deck Stacking Pitfall**: Never apply `position: sticky; top: X` stacking across multi-item sections whose height can exceed viewport height ($H_{\text{section}} > H_{\text{viewport}}$). Pinning the section top traps/clips lower content off-screen and breaks natural scrolling. For variable-height sections, use natural document flow with GPU cursor spotlights (`--mouse-x`, `--mouse-y`) or scroll-driven elevation instead.
+* **Scroll Event Layout Thrashing Pitfall**: Never query layout coordinates (`getBoundingClientRect()`, `offsetTop`, `scrollHeight`) inside unthrottled `scroll` listeners. Querying and mutating classes inside scroll ticks forces synchronous reflows and severe jank ($<25\text{ FPS}$). Always debounce scroll measurements via `requestAnimationFrame` and prefer off-main-thread `IntersectionObserver` for scrollspy visibility tracking.
+* **Dynamic Blur Compositing Pitfall**: Never transition dynamic CSS `filter: blur()` or large `backdrop-filter: blur()` on scroll-pinned cards. Continuous blur recalculations trigger massive GPU compositor texture invalidations.
 
 ## OUTPUT
 * Updated component files with GPU-accelerated, reduced-motion-compliant animation code.
