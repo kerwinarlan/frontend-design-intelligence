@@ -1,46 +1,36 @@
 # Pattern: Sticky Panel Card Deck Stacking & 3D Fan Out
 
-Inspired by Chinese hardcore web engineering and modern Linear/Vercel scroll mechanics, this pattern treats top-level section containers as a sticky deck of cards. As the user scrolls down, each page section slides up and stacks over the previous section with depth scaling (`scale(0.96)`), glass opacity adjustments, and subtle blur.
+## 1. Web Dev Specification & Critical Constraints
+
+### When to Use
+- **Strictly Fixed Height Sections ($H \le 80\text{vh}$)**: Multi-step interactive showcases, pricing tiers, or short feature slides where every card fits entirely within the viewport.
+
+### When NOT to Use & Architectural Pitfall
+- **Never Use for Variable or Tall Sections ($H > 100\text{vh}$)**: If a section contains long lists, timelines, or galleries exceeding the screen fold, `position: sticky; top: 88px` pins the top of the card and truncates all lower content. The user cannot scroll through the section, creating a broken, trapped-scroll defect.
+- **Layout Thrashing Hazard**: Never execute `getBoundingClientRect()` inside an unthrottled `scroll` event listener. This triggers forced synchronous layout recalculations on every frame.
+- **Alternative for Tall Sections**: Use **Cursor-Tracking Spotlight Borders** (`radial-gradient` mapped to `--mouse-x`, `--mouse-y`) or natural document flow with `IntersectionObserver` scrollspy.
 
 ---
 
-## 1. Web Dev Specification & Lingo
-
-### Core Mechanics
-- **CSS Sticky Stacking Context**: Each section uses `position: sticky; top: 88px;` inside a `perspective: 1200px` container (`.stacked-deck-container`).
-- **Depth & Blur Interpolation**: When a lower section slides over the active section, JS applies `.is-stacked-under` to trigger GPU-accelerated depth scaling (`transform: scale(0.96) translateY(-12px); filter: blur(1.5px); opacity: 0.82;`).
-- **3D Card Fan-Out**: Grid items inside card decks fan out horizontally and rotate slightly on hover (`transform: rotate(-2.5deg) translateY(-4px)` vs `rotate(2.5deg)`).
-- **Scroll Read Progress**: 3px fixed accent line at the top of the viewport reflecting document scroll percentage (`transform: scaleX(progress)`).
-
----
-
-## 2. CSS Implementation
+## 2. CSS Implementation (Fixed Height Cards Only)
 
 ```css
 .stacked-deck-container {
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  perspective: 1200px;
 }
 
 .sticky-deck-card {
   position: sticky;
-  top: 88px; /* Sticky offset below nav */
+  top: 88px;
+  max-height: 80vh; /* Mandatory cap */
+  overflow-y: auto;
   background: rgba(15, 26, 51, 0.9);
-  backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 34px;
   padding: 3rem 2.5rem;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
-  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), filter 350ms ease, opacity 350ms ease;
-  will-change: transform, filter, opacity;
-}
-
-.sticky-deck-card.is-stacked-under {
-  transform: scale(0.96) translateY(-12px);
-  opacity: 0.82;
-  filter: blur(1.5px);
 }
 
 /* 3D Card Fan Out on Hover */
@@ -58,27 +48,47 @@ Inspired by Chinese hardcore web engineering and modern Linear/Vercel scroll mec
 
 ---
 
-## 3. Lightweight Vanilla JS Driver
+## 3. Alternative: Hardware-Accelerated Spotlight Card Pattern
 
-```javascript
-const deckCards = Array.from(document.querySelectorAll('.sticky-deck-card'));
+For full-page sections with variable height, use cursor-tracking spotlight borders with zero layout cost:
 
-function handleDeckStacking() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  
-  const offset = 90;
-  deckCards.forEach((card, index) => {
-    const nextCard = deckCards[index + 1];
-    if (nextCard) {
-      const nextRect = nextCard.getBoundingClientRect();
-      if (nextRect.top <= offset + 60) {
-        card.classList.add('is-stacked-under');
-      } else {
-        card.classList.remove('is-stacked-under');
-      }
-    }
-  });
+```css
+.spotlight-card {
+  position: relative;
+  background: var(--glass-strong);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-xl);
+  padding: 3rem 2.5rem;
+  overflow: hidden;
 }
 
-window.addEventListener('scroll', handleDeckStacking, { passive: true });
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(450px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), rgba(77, 227, 242, 0.45), transparent 60%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+```
+
+```javascript
+// Global zero-layout-cost cursor tracking
+document.querySelectorAll('.spotlight-card').forEach(card => {
+  card.addEventListener('pointermove', (e) => {
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+    card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+  }, { passive: true });
+});
 ```
